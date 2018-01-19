@@ -1,0 +1,15 @@
+BIN = tinypcminfo
+CC = gcc
+CFLAGS = -Wall -lasound
+OBJS = tinypcminfo.o mixer.o pcm.o
+
+all: $(BIN)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(BIN): $(OBJS)
+	$(CC) -o $@ $(OBJS)
+
+clean:
+	rm -f rbcfg *.o $(BIN)

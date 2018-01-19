@@ -1,0 +1,14 @@
+CC = gcc
+CFLAGS = -Wall -lasound
+OBJS = tinymix.o mixer.o pcm.o
+
+all: tinymix
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+tinymix: $(OBJS)
+	$(CC) -o $@ $(OBJS)
+
+clean:
+	rm -f rbcfg *.o tinymix
